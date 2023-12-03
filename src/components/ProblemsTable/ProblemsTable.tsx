@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { BsCheckCircle } from "react-icons/bs";
-import { Problem } from "../../mockProblems/problems";
 import { auth, firestore } from "@/firebase/firebase";
 import {
   onSnapshot,

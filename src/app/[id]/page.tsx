@@ -2,7 +2,6 @@ import Topbar from "@/components/Topbar/Topbar";
 import Workspace from "@/components/Workspace/Workspace";
 import { Problem } from "@/utils/Types/types";
 import { problems } from "@/utils/problems";
-import router from "next/router";
 
 export default function Problem({params: {id}}: {params: {id: string}}) {
   const problem = problems[id];
