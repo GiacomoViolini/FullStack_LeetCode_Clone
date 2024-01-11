@@ -58,10 +58,8 @@ export default function Playground({
       return;
     }
     try {
-      setUserCode(
-        userCode.slice(userCode.indexOf(problem.starterFunctionName))
-      );
-      const cb = new Function(`return ${userCode}`)();
+      const tmp = userCode.slice(userCode.indexOf(problem.starterFunctionName));
+      const cb = new Function(`return ${tmp}`)();
       const handler = problems[path as string].handlerFunction;
 
       if (typeof handler == "function") {
@@ -90,7 +88,7 @@ export default function Playground({
       console.log(error.message);
       if (
         error.message.startsWith(
-          "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:"
+          "AssertionError [ERR_ASSERTION]:"
         )
       ) {
         toast.error("Oops! One or more test cases failed", {

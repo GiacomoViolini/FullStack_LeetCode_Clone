@@ -68,6 +68,6 @@ export const mergeIntervals: Problem = {
     <li class='mt-2'><code>0 <= starti <= endi <= 10^4</code></li>`,
   starterCode: starterCodeMergeIntervalsJS,
   handlerFunction: mergeIntervalsHandler,
-  starterFunctionName: "function containerWithMostWater(",
+  starterFunctionName: "function mergeIntervals(",
   order: 7,
 };

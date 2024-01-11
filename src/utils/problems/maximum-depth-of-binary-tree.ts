@@ -67,7 +67,6 @@ const starterCodeMaximumDepthOfBinaryTreeJS = `/**
 *     this.right = (right===undefined ? null : right)
 * }
 */
-/**
 function maxDepthOfBinaryTree(root) {
   // Write your code here
 };`;
