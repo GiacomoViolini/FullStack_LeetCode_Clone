@@ -2,37 +2,10 @@
 
 import ProblemsTable from "@/components/ProblemsTable/ProblemsTable";
 import Topbar from "@/components/Topbar/Topbar";
-import { ToastContainer } from "react-toastify";
 import { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { firestore } from "@/firebase/firebase";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-
-  const [inputs, setInputs] = useState({
-    id: "",
-    title: "",
-    difficulty: "",
-    category: "",
-    link: "",
-    order: 0,
-    likes: 0,
-    dislikes: 0,
-  });
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputs((inputs) => ({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    await setDoc(doc(firestore, "problems", inputs.id), inputs);
-    alert("done");
-  };
   return (
     <main className="bg-dark-layer-2 min-h-screen">
       <Topbar />
@@ -66,15 +39,6 @@ export default function Home() {
           <ProblemsTable setLoadingProblems={setLoading}/>
         </table>
       </div>
-      {/* <form className="flex flex-col gap-3 p-6" onSubmit={handleSubmit}>
-        <input onChange={handleInputChange} type="text" placeholder="id" name="id"/>
-        <input onChange={handleInputChange} type="text" placeholder="title" name="title"/>
-        <input onChange={handleInputChange} type="text" placeholder="difficulty" name="difficulty"/>
-        <input onChange={handleInputChange} type="text" placeholder="category" name="category"/>
-        <input onChange={handleInputChange} type="text" placeholder="link?" name="link"/>
-        <input onChange={handleInputChange} type="number" placeholder="order" name="order"/>
-        <button type="submit" className="bg-white">Submit</button>
-      </form> */}
     </main>
   );
 }

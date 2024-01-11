@@ -10,6 +10,7 @@ import {
   runTransaction,
   updateDoc,
 } from "firebase/firestore";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -299,7 +300,7 @@ export default function ProblemDescription({
                     Example {index + 1}:{" "}
                   </p>
                   {example.img && (
-                    <img src={example.img} alt="" className="mt-3" />
+                    <Image src={example.img} alt="" className="mt-3" width={400} height={400} priority/>
                   )}
                   <div className="example-card">
                     <p>

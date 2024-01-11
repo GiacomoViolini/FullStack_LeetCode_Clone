@@ -45,7 +45,7 @@ export default function Topbar({ problemPage }: { problemPage?: boolean }) {
 
   return (
     <nav className="relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7">
-      <div className={`flex w-full items-center justify-between `}>
+      <div className="flex w-full items-center justify-between">
         <Link href="/" className="h-[22px] flex items-center">
           <Image
             src="/leetcode.png"
@@ -56,7 +56,7 @@ export default function Topbar({ problemPage }: { problemPage?: boolean }) {
           />
         </Link>
         {problemPage && (
-          <div className="flex items-center gap-4 flex-1 justify-center">
+          <div className="flex items-center gap-4 flex-1" style={{"marginLeft": "30rem"}}>
             <div
               className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
               onClick={() => handleProblemChange(false)}
@@ -73,7 +73,7 @@ export default function Topbar({ problemPage }: { problemPage?: boolean }) {
               <p>Problem List</p>
             </Link>
             <div
-              className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
+              className=" flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
               onClick={() => handleProblemChange(true)}
             >
               <FaChevronRight />

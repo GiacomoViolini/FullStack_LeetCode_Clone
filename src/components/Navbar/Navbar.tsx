@@ -1,6 +1,7 @@
 import { authModalAtom } from "@/atoms/authModalAtom";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
+import Image from "next/image";
 
 export default function Navbar() {
     const setAuthModal = useSetRecoilState(authModalAtom)
@@ -10,8 +11,8 @@ export default function Navbar() {
     }
     return(
         <div className="flex justify-between sm:px-12 px-2 md:px-24 bg-dark-layer-2 border-gray-950 border-b-2">
-            <Link href="/" className="flex items-end justify-center h-20">
-                <img src="/leetcode.png" alt="LeetCode" className="h-20"/>
+            <Link href="/" className="flex items-end justify-center">
+                <Image src="/leetcode.png" alt="LeetCode" width={260} height={30} priority/>
             </Link>
             <div className="flex items-center">
                 <button className=" bg-brand-orange text-white px-3 py-2 sm:px-5 rounded-md text-md font-semibold border-2 border-transparent

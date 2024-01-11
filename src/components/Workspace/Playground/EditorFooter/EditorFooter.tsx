@@ -1,4 +1,3 @@
-import { BsChevronUp } from "react-icons/bs";
 
 interface EditorFooterProps {
   handleSubmit: () => void;

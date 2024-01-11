@@ -10,7 +10,7 @@ import EditorFooter from "./EditorFooter/EditorFooter";
 import { Problem } from "@/utils/Types/types";
 import { auth, firestore } from "@/firebase/firebase";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { usePathname } from "next/navigation";
 import { problems } from "@/utils/problems";
@@ -23,9 +23,9 @@ interface PlaygroundProps {
 }
 
 export interface ISettings {
-	fontSize: string;
-	settingsModalIsOpen: boolean;
-	dropdownIsOpen: boolean;
+  fontSize: string;
+  settingsModalIsOpen: boolean;
+  dropdownIsOpen: boolean;
 }
 
 export default function Playground({
@@ -34,7 +34,7 @@ export default function Playground({
   setSolved,
 }: PlaygroundProps) {
   const [activeTestCaseId, setActiveTestCaseId] = useState<number>(0);
-  let [userCode, setUserCode] = useState<string>(problem.starterCode);
+  const [userCode, setUserCode] = useState<string>(problem.starterCode);
   const [user] = useAuthState(auth);
   let path = usePathname();
   path = path.slice(1);
@@ -42,12 +42,11 @@ export default function Playground({
 
   const [fontSize, setFontSize] = useLocalStorage("lcc-fontSize", "16px");
 
-	const [settings, setSettings] = useState<ISettings>({
-		fontSize: fontSize,
-		settingsModalIsOpen: false,
-		dropdownIsOpen: false,
-	});
-
+  const [settings, setSettings] = useState<ISettings>({
+    fontSize: fontSize,
+    settingsModalIsOpen: false,
+    dropdownIsOpen: false,
+  });
 
   const handleSubmit = async () => {
     if (!user) {
@@ -59,7 +58,9 @@ export default function Playground({
       return;
     }
     try {
-      userCode = userCode.slice(userCode.indexOf(problem.starterFunctionName));
+      setUserCode(
+        userCode.slice(userCode.indexOf(problem.starterFunctionName))
+      );
       const cb = new Function(`return ${userCode}`)();
       const handler = problems[path as string].handlerFunction;
 
@@ -134,7 +135,7 @@ export default function Playground({
             value={userCode}
             theme={vscodeDark}
             extensions={[javascript()]}
-            style={{fontSize : settings.fontSize}}
+            style={{ fontSize: settings.fontSize }}
             onChange={handleChange}
           />
         </div>

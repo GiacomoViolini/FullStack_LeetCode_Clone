@@ -3,9 +3,14 @@ import Workspace from "@/components/Workspace/Workspace";
 import { Problem } from "@/utils/Types/types";
 import { problems } from "@/utils/problems";
 
-export default function Problem({params: {id}}: {params: {id: string}}) {
+export default function Problem({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   const problem = problems[id];
-  problem.handlerFunction = problem.handlerFunction.toString();
+  if (problem) problem.handlerFunction = problem.handlerFunction.toString();
+  else console.log("error id not found");
   return (
     <div>
       <Topbar problemPage />
